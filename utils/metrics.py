@@ -25,17 +25,7 @@ def dice_coefficient(predicted, target, smooth=1e-6):
 
 
 def iou_score(predicted, target, smooth=1e-6):
-    """
-    Calculate IoU (Intersection over Union / Jaccard Index)
     
-    Args:
-        predicted: Predicted segmentation logits (before sigmoid)
-        target: Ground truth binary mask
-        smooth: Smoothing factor to avoid division by zero
-    
-    Returns:
-        IoU score as float
-    """
     predicted = torch.sigmoid(predicted)
     predicted = (predicted > 0.5).float()
     
@@ -46,16 +36,6 @@ def iou_score(predicted, target, smooth=1e-6):
 
 
 def pixel_accuracy(predicted, target):
-    """
-    Calculate pixel-wise accuracy
-    
-    Args:
-        predicted: Predicted segmentation logits (before sigmoid)
-        target: Ground truth binary mask
-    
-    Returns:
-        Pixel accuracy as float
-    """
     predicted = torch.sigmoid(predicted)
     predicted = (predicted > 0.5).float()
     
